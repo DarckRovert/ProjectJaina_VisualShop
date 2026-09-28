@@ -1,0 +1,8 @@
+## Interface: 30300
+## Title: WoW Peru - Tienda de Visuales
+## Notes: Tienda de visuales cosmeticos del reino Alas (Pruebas).
+## Author: WoW Peru
+## Version: 2026-09-02
+
+Catalog.lua
+UI.lua
