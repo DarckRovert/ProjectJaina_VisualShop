@@ -1,5 +1,12 @@
 # 📋 Changelog — WowPeruVisualShop
 
+## [1.0.1] - 2026-09-30
+
+### ✨ Comandos de Chat
+- Añadidos comandos slash `/tienda`, `/visualshop`, `/alas`, y `/wpvs` para abrir y cerrar el catálogo visual desde el chat o macros.
+
+---
+
 ## [1.0.0] - 2026-09-28
 
 ### 🎉 Primera Versión Documentada

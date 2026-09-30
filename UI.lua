@@ -700,5 +700,14 @@ mini:SetScript("OnDragStart", function(self) self:SetScript("OnUpdate", function
 end) end)
 mini:SetScript("OnDragStop", function(self) self:SetScript("OnUpdate", nil) end)
 
+-- Comandos Slash
+SLASH_WOWPERU_VISUAL1 = "/visualshop"
+SLASH_WOWPERU_VISUAL2 = "/tienda"
+SLASH_WOWPERU_VISUAL3 = "/alas"
+SLASH_WOWPERU_VISUAL4 = "/wpvs"
+SlashCmdList["WOWPERU_VISUAL"] = function()
+    Toggle()
+end
+
 DEFAULT_CHAT_FRAME:AddMessage(
-    "|cff40ff40[Tienda de Visuales]|r cargada. Abrela con el boton del minimapa.")
+    "|cff40ff40[Tienda de Visuales]|r cargada. Usa /tienda, /visualshop o el botón del minimapa.")
