@@ -20,6 +20,7 @@
 ----------------------------------------------------------------------------]]
 
 local PREFIX  = "WPVS"
+local ALT_PREFIX = "WP_VISUAL"
 local C       = WowPeruVisualCatalog
 
 local ICON_PATH = "Interface\\AddOns\\WowPeruVisualShop\\iconos\\"
@@ -74,7 +75,13 @@ local state = {
 --------------------------------------------------------------------------
 
 local function Talk(msg)
-    SendAddonMessage(PREFIX, msg, "WHISPER", UnitName("player"))
+    local pName = UnitName("player")
+    if not pName or pName == "" or pName == UNKNOWNOBJECT then return end
+    if RegisterAddonMessagePrefix then
+        RegisterAddonMessagePrefix(PREFIX)
+        RegisterAddonMessagePrefix(ALT_PREFIX)
+    end
+    SendAddonMessage(PREFIX, msg, "WHISPER", pName)
 end
 
 -- Lo que le queda a un ala, corto, que el hueco de la tarjeta es pequeno.
@@ -610,12 +617,16 @@ listener:RegisterEvent("CHAT_MSG_ADDON")
 listener:RegisterEvent("PLAYER_ENTERING_WORLD")
 listener:SetScript("OnEvent", function(self, event, ...)
     if event == "PLAYER_ENTERING_WORLD" then
+        if RegisterAddonMessagePrefix then
+            RegisterAddonMessagePrefix(PREFIX)
+            RegisterAddonMessagePrefix(ALT_PREFIX)
+        end
         Talk("SYNC")
         return
     end
 
     local prefix, message = ...
-    if prefix ~= PREFIX then return end
+    if prefix ~= PREFIX and prefix ~= ALT_PREFIX then return end
 
     local verb, rest = string.match(message, "^(%u+):(.*)$")
     local route = verb and ROUTES[verb]
