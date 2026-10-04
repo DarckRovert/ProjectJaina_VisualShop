@@ -664,14 +664,26 @@ end
 -- Boton del minimapa
 --------------------------------------------------------------------------
 
+local DEFAULT_VISUALSHOP_ANGLE = 115
+local VISUALSHOP_RADIUS = 80
+
+local function UpdateVisualShopBtnPosition(button, angle)
+    local rad = math.rad(angle)
+    local x = math.cos(rad) * VISUALSHOP_RADIUS
+    local y = math.sin(rad) * VISUALSHOP_RADIUS
+    button:ClearAllPoints()
+    button:SetPoint("CENTER", Minimap, "CENTER", x, y)
+end
+
 local mini = CreateFrame("Button", "WowPeruVisualShopMinimapButton", Minimap)
 mini:SetWidth(31)
 mini:SetHeight(31)
 mini:SetFrameStrata("MEDIUM")
 mini:SetFrameLevel(8)
+mini:EnableMouse(true)
+mini:SetMovable(true)
 mini:RegisterForClicks("LeftButtonUp", "RightButtonUp")
-mini:RegisterForDrag("LeftButton")
-mini:SetPoint("TOPLEFT", Minimap, "TOPLEFT", 52, -8)
+mini:RegisterForDrag("LeftButton", "RightButton")
 
 local icon = mini:CreateTexture(nil, "BACKGROUND")
 icon:SetWidth(20)
@@ -686,7 +698,40 @@ border:SetHeight(53)
 border:SetPoint("TOPLEFT", 0, 0)
 border:SetTexture("Interface\\Minimap\\MiniMap-TrackingBorder")
 
-mini:SetScript("OnClick", Toggle)
+local wasDragged = false
+local function OnDragUpdate(self)
+    local mx, my = Minimap:GetCenter()
+    local cx, cy = GetCursorPosition()
+    local scale = Minimap:GetEffectiveScale()
+    cx, cy = cx / scale, cy / scale
+    local angle = math.deg(math.atan2(cy - my, cx - mx))
+    if angle < 0 then angle = angle + 360 end
+
+    WowPeruVisualShopDB = WowPeruVisualShopDB or {}
+    WowPeruVisualShopDB.minimapAngle = angle
+
+    UpdateVisualShopBtnPosition(self, angle)
+    wasDragged = true
+end
+
+mini:SetScript("OnDragStart", function(self)
+    wasDragged = false
+    self:LockHighlight()
+    self:SetScript("OnUpdate", OnDragUpdate)
+end)
+
+mini:SetScript("OnDragStop", function(self)
+    self:UnlockHighlight()
+    self:SetScript("OnUpdate", nil)
+end)
+
+mini:SetScript("OnClick", function(self, button)
+    if wasDragged then
+        wasDragged = false
+        return
+    end
+    Toggle()
+end)
 
 mini:SetScript("OnEnter", function(self)
     GameTooltip:SetOwner(self, "ANCHOR_LEFT")
@@ -696,16 +741,17 @@ mini:SetScript("OnEnter", function(self)
 end)
 mini:SetScript("OnLeave", function() GameTooltip:Hide() end)
 
--- Arrastrar el boton alrededor del minimapa.
-mini:SetScript("OnDragStart", function(self) self:SetScript("OnUpdate", function(s)
-    local mx, my = Minimap:GetCenter()
-    local cx, cy = GetCursorPosition()
-    local scale = UIParent:GetEffectiveScale()
-    local angle = math.atan2(cy / scale - my, cx / scale - mx)
-    s:ClearAllPoints()
-    s:SetPoint("CENTER", Minimap, "CENTER", math.cos(angle) * 80, math.sin(angle) * 80)
-end) end)
-mini:SetScript("OnDragStop", function(self) self:SetScript("OnUpdate", nil) end)
+local vsInitFrame = CreateFrame("Frame")
+vsInitFrame:RegisterEvent("ADDON_LOADED")
+vsInitFrame:RegisterEvent("PLAYER_LOGIN")
+vsInitFrame:SetScript("OnEvent", function(self, event, addon)
+    if event == "ADDON_LOADED" and addon == "WowPeruVisualShop" or event == "PLAYER_LOGIN" then
+        local savedAngle = (WowPeruVisualShopDB and WowPeruVisualShopDB.minimapAngle) or DEFAULT_VISUALSHOP_ANGLE
+        UpdateVisualShopBtnPosition(mini, savedAngle)
+    end
+end)
+
+UpdateVisualShopBtnPosition(mini, DEFAULT_VISUALSHOP_ANGLE)
 
 -- Comandos Slash
 SLASH_WOWPERU_VISUAL1 = "/visualshop"

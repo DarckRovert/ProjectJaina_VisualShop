@@ -3,6 +3,7 @@
 ## Notes: Tienda de visuales cosmeticos del reino Alas (Pruebas).
 ## Author: DarckRovert (Elnazzareno) & WoW Perú Team
 ## Version: 2026-09-02
+## SavedVariables: WowPeruVisualShopDB
 
 Catalog.lua
 UI.lua
