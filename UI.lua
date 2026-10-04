@@ -131,9 +131,16 @@ shop:Hide()
 -- Cerrar con ESC.
 tinsert(UISpecialFrames, "WowPeruVisualShopFrame")
 
+-- Logo Oficial de WoW Perú
+local logo = shop:CreateTexture(nil, "ARTWORK")
+logo:SetSize(84, 42)
+logo:SetPoint("TOPLEFT", shop, "TOPLEFT", PAD, -10)
+logo:SetTexture("Interface\\AddOns\\WowPeruVisualShop\\Textures\\wowperu_logo.tga")
+shop.logo = logo
+
 local title = shop:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
 title:SetPoint("TOP", 0, -16)
-title:SetText("Tienda de Visuales")
+title:SetText("|cFFD4AF37WoW Perú|r - Tienda de Visuales")
 
 local subtitle = shop:CreateFontString(nil, "OVERLAY", "GameFontHighlightSmall")
 subtitle:SetPoint("TOP", title, "BOTTOM", 0, -4)
@@ -142,7 +149,7 @@ subtitle:SetText(string.format(
     C.dias))
 
 local pageLabel = shop:CreateFontString(nil, "OVERLAY", "GameFontNormal")
-pageLabel:SetPoint("TOPLEFT", PAD + 4, -18)
+pageLabel:SetPoint("TOPLEFT", PAD + 90, -22)
 
 local tokenLabel = shop:CreateFontString(nil, "OVERLAY", "GameFontNormal")
 tokenLabel:SetPoint("TOPRIGHT", -34, -18)
