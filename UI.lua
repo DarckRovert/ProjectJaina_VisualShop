@@ -699,11 +699,23 @@ border:SetPoint("TOPLEFT", 0, 0)
 border:SetTexture("Interface\\Minimap\\MiniMap-TrackingBorder")
 
 local wasDragged = false
+local dragStartX, dragStartY = 0, 0
+local DRAG_THRESHOLD_SQ = 16 -- 4 píxeles de tolerancia física para diferenciar clic de arrastre
+
 local function OnDragUpdate(self)
+    local curX, curY = GetCursorPosition()
+    if not wasDragged then
+        local dx = curX - dragStartX
+        local dy = curY - dragStartY
+        if (dx * dx + dy * dy) < DRAG_THRESHOLD_SQ then
+            return
+        end
+        wasDragged = true
+    end
+
     local mx, my = Minimap:GetCenter()
-    local cx, cy = GetCursorPosition()
     local scale = Minimap:GetEffectiveScale()
-    cx, cy = cx / scale, cy / scale
+    local cx, cy = curX / scale, curY / scale
     local angle = math.deg(math.atan2(cy - my, cx - mx))
     if angle < 0 then angle = angle + 360 end
 
@@ -711,11 +723,11 @@ local function OnDragUpdate(self)
     WowPeruVisualShopDB.minimapAngle = angle
 
     UpdateVisualShopBtnPosition(self, angle)
-    wasDragged = true
 end
 
 mini:SetScript("OnDragStart", function(self)
     wasDragged = false
+    dragStartX, dragStartY = GetCursorPosition()
     self:LockHighlight()
     self:SetScript("OnUpdate", OnDragUpdate)
 end)
