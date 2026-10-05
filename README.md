@@ -2,6 +2,8 @@
 
 > **WoW Perú Ecosystem** · WotLK 3.3.5a compatible · `Interface: 30300`
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 Tienda oficial de efectos visuales, alas, auras y cosméticos del **Reino Andino**. Permite a los jugadores previsualizar, adquirir y equipar cosméticos personalizados en tiempo real comunicándose directamente con el backend autoritativo de Eluna en AzerothCore.
 
 ---
