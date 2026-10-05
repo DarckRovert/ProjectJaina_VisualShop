@@ -1,0 +1,32 @@
+# World of Warcraft Addon Git Ignore
+# Project: WowPeruVisualShop (WoW 3.3.5a Client)
+
+# OS generated files
+Thumbs.db
+ehthumbs.db
+[Dd]esktop.ini
+.DS_Store
+._*
+
+# Editor and IDE configurations
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary & backup files
+*.bak
+*.orig
+*.tmp
+*_backup.lua
+__pycache__/
+*.pyc
+
+# WoW Client runtime directories (if placed inside AddOns directly)
+WTF/
+Logs/
+Errors/
+Screenshots/
+WDB/
+Cache/
