@@ -34,6 +34,24 @@ Tienda oficial de efectos visuales, alas, auras y cosméticos del **Reino Andino
 
 - `WowPeruVisualShopDB` — Preferencias de posición del botón de minimapa y filtros de catálogo.
 
+## 💻 Comandos de Barra (Slash Commands)
+
+| Comando | Acción |
+|---|---|
+| `/tienda` | Abre o cierra el catálogo de cosméticos y efectos visuales. |
+| `/visualshop` | Alias alternativo en inglés para abrir la tienda visual. |
+| `/alas` | Acceso directo a la pestaña de alas cosméticas. |
+| `/wpvs` | Abreviatura rápida de apertura y cierre. |
+
+## 📥 Instalación en el Cliente WoW
+
+1. Asegúrate de que la carpeta `WowPeruVisualShop` se encuentre dentro de:
+   ```
+   World of Warcraft/Interface/AddOns/WowPeruVisualShop/
+   ```
+2. Inicia el cliente de juego WoW Perú y verifica que el accesorio esté activo.
+3. Puedes abrir la tienda haciendo clic en el botón del minimapa o escribiendo `/tienda`.
+
 ## Créditos y Licencia
 
 - **Autor:** DarckRovert (Ingame: `Elnazzareno`) & WoW Perú Team — [wow-peru.lat](https://wow-peru.lat/)
@@ -45,6 +63,7 @@ Tienda oficial de efectos visuales, alas, auras y cosméticos del **Reino Andino
 
 * [Ficha Técnica Oficial del Ecosistema](ECOSYSTEM_REGISTRY.md)
 * [Historial de Cambios](CHANGELOG.md)
+* [Aviso Legal y Atribución](NOTICE.md)
 * [Licencia MIT Canónica](LICENSE)
 
 ---
