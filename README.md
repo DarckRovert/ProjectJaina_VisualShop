@@ -1,5 +1,7 @@
 # 🇵🇪 WoW Perú — VisualShop (Tienda de Cosméticos)
 
+[![GitHub](https://img.shields.io/badge/GitHub-DarckRovert%2FWowPeruVisualShop-black?logo=github)](https://github.com/DarckRovert/WowPeruVisualShop)
+
 > **WoW Perú Ecosystem** · WotLK 3.3.5a compatible · `Interface: 30300`
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
