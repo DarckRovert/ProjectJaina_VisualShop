@@ -56,7 +56,7 @@ Tienda oficial de efectos visuales, alas, auras y cosméticos del **Project Jain
 
 ## Créditos y Licencia
 
-- **Autor:** DarckRovert (Ingame: `Elnazzareno`) & Project Jaina Team — [worldofwanos.com](https://worldofwanos.com/)
+- **Autor:** DarckRovert (Ingame: `Elnazzareno`) & Project Jaina Team — [projectjaina.com](https://projectjaina.com/)
 - **Licencia:** [MIT License](LICENSE)
 
 ---

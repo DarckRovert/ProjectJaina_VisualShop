@@ -7,7 +7,7 @@ Contiene la tienda oficial in-game de efectos visuales, auras ambientales y alas
 
 ## 1. Autoría y Desarrollo Oficial
 * **Desarrollador Principal:** DarckRovert (Ingame: `Elnazzareno`) & Project Jaina Team
-* **Ecosistema:** [Project Jaina — Project Jaina](https://worldofwanos.com/)
+* **Ecosistema:** [Project Jaina — Project Jaina](https://projectjaina.com/)
 * **Repositorio Oficial:** [DarckRovert/WowPeruVisualShop](https://github.com/DarckRovert/WowPeruVisualShop)
 
 ---

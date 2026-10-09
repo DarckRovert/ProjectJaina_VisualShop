@@ -1,7 +1,7 @@
 # 🔌 Especificación Técnica y API — WowPeruVisualShop
 
 [![GitHub](https://img.shields.io/badge/GitHub-DarckRovert%2FWowPeruVisualShop-black?logo=github)](https://github.com/DarckRovert/WowPeruVisualShop)
-[![Ecosistema](https://img.shields.io/badge/Ecosistema-WoW%20Per%C3%BA%203.3.5a-gold.svg)](https://worldofwanos.com/)
+[![Ecosistema](https://img.shields.io/badge/Ecosistema-WoW%20Per%C3%BA%203.3.5a-gold.svg)](https://projectjaina.com/)
 
 ## 📌 Resumen Arquitectónico
 Tienda in-game para previsualizar y adquirir auras cosméticas, alas, efectos de armas e ilusiones visuales sincronizadas con backend Eluna 59_SpellVisualCatalog.lua.
