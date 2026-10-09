@@ -1,4 +1,4 @@
-# 🤖 Reglas de Agente IA — WowPeruVisualShop
+# 🤖 Reglas de Agente IA — ProjectJaina_VisualShop
 
 > **Ámbito:** `d:\Project Jaina\Client\Interface\AddOns\ProjectJaina_VisualShop\`
 

@@ -1,4 +1,4 @@
-# 📋 Changelog — WowPeruVisualShop
+# 📋 Changelog — ProjectJaina_VisualShop
 
 ## [1.0.1] - 2026-09-30
 

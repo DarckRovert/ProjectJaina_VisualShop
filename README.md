@@ -1,6 +1,6 @@
-# 🇵🇪 Project Jaina — VisualShop (Tienda de Cosméticos)
+# ❄️ Project Jaina — VisualShop (Tienda de Cosméticos)
 
-[![GitHub](https://img.shields.io/badge/GitHub-DarckRovert%2FWowPeruVisualShop-black?logo=github)](https://github.com/DarckRovert/WowPeruVisualShop)
+[![GitHub](https://img.shields.io/badge/GitHub-DarckRovert%2FProjectJaina_VisualShop-black?logo=github)](https://github.com/DarckRovert/ProjectJaina_VisualShop)
 
 > **Project Jaina Ecosystem** · WotLK 3.3.5a compatible · `Interface: 30300`
 
@@ -34,7 +34,7 @@ Tienda oficial de efectos visuales, alas, auras y cosméticos del **Project Jain
 
 ## Variables Guardadas
 
-- `WowPeruVisualShopDB` — Preferencias de posición del botón de minimapa y filtros de catálogo.
+- `ProjectJaina_VisualShopDB` — Preferencias de posición del botón de minimapa y filtros de catálogo.
 
 ## 💻 Comandos de Barra (Slash Commands)
 
@@ -47,16 +47,16 @@ Tienda oficial de efectos visuales, alas, auras y cosméticos del **Project Jain
 
 ## 📥 Instalación en el Cliente WoW
 
-1. Asegúrate de que la carpeta `WowPeruVisualShop` se encuentre dentro de:
+1. Asegúrate de que la carpeta `ProjectJaina_VisualShop` se encuentre dentro de:
    ```
-   World of Warcraft/Interface/AddOns/WowPeruVisualShop/
+   World of Warcraft/Interface/AddOns/ProjectJaina_VisualShop/
    ```
 2. Inicia el cliente de juego Project Jaina y verifica que el accesorio esté activo.
 3. Puedes abrir la tienda haciendo clic en el botón del minimapa o escribiendo `/tienda`.
 
 ## Créditos y Licencia
 
-- **Autor:** DarckRovert (Ingame: `Elnazzareno`) & Project Jaina Team — [projectjaina.com](https://projectjaina.com/)
+- **Autor:** DarckRovert (Ingame: `Elnazzareno`) & Antigravity (Mythos 5) — [projectjaina.com](https://darckrovert.github.io/ProjectJaina_Web/)
 - **Licencia:** [MIT License](LICENSE)
 
 ---

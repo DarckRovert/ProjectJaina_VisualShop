@@ -115,7 +115,7 @@ local ICON_SIZE_BONO = 110   -- el icono cede sitio al texto del bonus
 local PAD            = 14
 local ICON_SIZE      = 124
 
-local shop = CreateFrame("Frame", "WowPeruVisualShopFrame", UIParent)
+local shop = CreateFrame("Frame", "ProjectJaina_VisualShopFrame", UIParent)
 shop:SetWidth(PAD * 2 + C.columns * CARD_W + (C.columns - 1) * 8)
 shop:SetHeight(150 + C.rows * (CARD_H + 10))
 shop:SetPoint("CENTER")
@@ -129,7 +129,7 @@ Backdrop(shop)
 shop:Hide()
 
 -- Cerrar con ESC.
-tinsert(UISpecialFrames, "WowPeruVisualShopFrame")
+tinsert(UISpecialFrames, "ProjectJaina_VisualShopFrame")
 
 -- Logo Oficial de Project Jaina
 local logo = shop:CreateTexture(nil, "ARTWORK")
@@ -215,7 +215,7 @@ local function BuildCard(index)
     card:SetScript("OnClick", function(self)
         if self.entry then
             state.selected = self.entry.id
-            WowPeruVisualShop_Refresh()
+            ProjectJaina_VisualShop_Refresh()
         end
     end)
 
@@ -289,7 +289,7 @@ prev:SetWidth(110); prev:SetHeight(24)
 prev:SetPoint("BOTTOMLEFT", PAD, 14)
 prev:SetText("Anterior")
 prev:SetScript("OnClick", function()
-    if state.page > 1 then state.page = state.page - 1; WowPeruVisualShop_Refresh() end
+    if state.page > 1 then state.page = state.page - 1; ProjectJaina_VisualShop_Refresh() end
 end)
 
 local next_ = CreateFrame("Button", nil, shop, "UIPanelButtonTemplate")
@@ -297,7 +297,7 @@ next_:SetWidth(110); next_:SetHeight(24)
 next_:SetPoint("BOTTOMRIGHT", -PAD, 14)
 next_:SetText("Siguiente")
 next_:SetScript("OnClick", function()
-    if state.page < C.PageCount() then state.page = state.page + 1; WowPeruVisualShop_Refresh() end
+    if state.page < C.PageCount() then state.page = state.page + 1; ProjectJaina_VisualShop_Refresh() end
 end)
 
 local action = CreateFrame("Button", nil, shop, "UIPanelButtonTemplate")
@@ -418,7 +418,7 @@ end)
 -- Pintado
 --------------------------------------------------------------------------
 
-function WowPeruVisualShop_Refresh()
+function ProjectJaina_VisualShop_Refresh()
     local pages = C.PageCount()
     if state.page > pages then state.page = pages end
 
@@ -639,7 +639,7 @@ listener:SetScript("OnEvent", function(self, event, ...)
     local route = verb and ROUTES[verb]
     if route then
         route(rest)
-        if shop:IsShown() then WowPeruVisualShop_Refresh() end
+        if shop:IsShown() then ProjectJaina_VisualShop_Refresh() end
     end
 end)
 
@@ -655,7 +655,7 @@ local function Toggle()
         shop:Hide()
     else
         Talk("SYNC")
-        WowPeruVisualShop_Refresh()
+        ProjectJaina_VisualShop_Refresh()
         shop:Show()
     end
 end
@@ -675,7 +675,7 @@ local function UpdateVisualShopBtnPosition(button, angle)
     button:SetPoint("CENTER", Minimap, "CENTER", x, y)
 end
 
-local mini = CreateFrame("Button", "WowPeruVisualShopMinimapButton", Minimap)
+local mini = CreateFrame("Button", "ProjectJaina_VisualShopMinimapButton", Minimap)
 mini:SetWidth(31)
 mini:SetHeight(31)
 mini:SetFrameStrata("MEDIUM")
@@ -719,8 +719,8 @@ local function OnDragUpdate(self)
     local angle = math.deg(math.atan2(cy - my, cx - mx))
     if angle < 0 then angle = angle + 360 end
 
-    WowPeruVisualShopDB = WowPeruVisualShopDB or {}
-    WowPeruVisualShopDB.minimapAngle = angle
+    ProjectJaina_VisualShopDB = ProjectJaina_VisualShopDB or {}
+    ProjectJaina_VisualShopDB.minimapAngle = angle
 
     UpdateVisualShopBtnPosition(self, angle)
 end
@@ -757,10 +757,10 @@ local vsInitFrame = CreateFrame("Frame")
 vsInitFrame:RegisterEvent("ADDON_LOADED")
 vsInitFrame:RegisterEvent("PLAYER_LOGIN")
 vsInitFrame:SetScript("OnEvent", function(self, event, addon)
-    if (event == "ADDON_LOADED" and (addon == "Wanos_VisualShop" or addon == "WowPeruVisualShop")) or event == "PLAYER_LOGIN" then
-        Wanos_VisualShop_DB = Wanos_VisualShop_DB or WowPeruVisualShopDB or {}
-        WowPeruVisualShopDB = Wanos_VisualShop_DB
-        local savedAngle = (Wanos_VisualShop_DB and Wanos_VisualShop_DB.minimapAngle) or DEFAULT_VISUALSHOP_ANGLE
+    if (event == "ADDON_LOADED" and (addon == "ProjectJaina_VisualShop" or addon == "ProjectJaina_VisualShop")) or event == "PLAYER_LOGIN" then
+        ProjectJaina_VisualShop_DB = ProjectJaina_VisualShop_DB or ProjectJaina_VisualShopDB or {}
+        ProjectJaina_VisualShopDB = ProjectJaina_VisualShop_DB
+        local savedAngle = (ProjectJaina_VisualShop_DB and ProjectJaina_VisualShop_DB.minimapAngle) or DEFAULT_VISUALSHOP_ANGLE
         UpdateVisualShopBtnPosition(mini, savedAngle)
     end
 end)

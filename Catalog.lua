@@ -5,7 +5,7 @@
   FUENTE UNICA DE VERDAD.
   Este archivo se despliega IDENTICO en dos sitios:
      servidor -> lua/active/59_SpellVisualCatalog.lua
-     cliente  -> Interface/AddOns/WowPeruVisualShop/Catalog.lua
+     cliente  -> Interface/AddOns/ProjectJaina_VisualShop/Catalog.lua
 
   Para agregar un visual nuevo basta con UNA linea en C.items.
   No hay que tocar ni el servidor ni la interfaz: la paginacion se recalcula sola.
@@ -22,7 +22,7 @@
            Va entre corchetes dobles a proposito: en una cadena larga de Lua
            la barra invertida es literal, asi que no hay que duplicarla ni
            hay riesgo de que se rompa el escapado al copiar el archivo.
-    icon   Nombre del .tga en WowPeruVisualShop/iconos/, sin extension.
+    icon   Nombre del .tga en ProjectJaina_VisualShop/iconos/, sin extension.
            Es lo que se ve en la tarjeta. Se intento con el widget Model de
            3.3.5 y no hay forma: estos M2 no traen datos de camara y el marco
            no los encuadra. Los iconos se generan renderizando el propio
