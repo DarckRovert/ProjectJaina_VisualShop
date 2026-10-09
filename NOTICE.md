@@ -1,13 +1,13 @@
 # 📜 Aviso Legal y Atribución — WowPeruVisualShop
 
-Este repositorio forma parte del ecosistema oficial de personalización cosmética de **WoW Perú - Reino Andino**.
+Este repositorio forma parte del ecosistema oficial de personalización cosmética de **Project Jaina - Project Jaina**.
 Contiene la tienda oficial in-game de efectos visuales, auras ambientales y alas para World of Warcraft 3.3.5a (Build 12340).
 
 ---
 
 ## 1. Autoría y Desarrollo Oficial
-* **Desarrollador Principal:** DarckRovert (Ingame: `Elnazzareno`) & WoW Perú Team
-* **Ecosistema:** [WoW Perú — Reino Andino](https://wow-peru.lat/)
+* **Desarrollador Principal:** DarckRovert (Ingame: `Elnazzareno`) & Project Jaina Team
+* **Ecosistema:** [Project Jaina — Project Jaina](https://worldofwanos.com/)
 * **Repositorio Oficial:** [DarckRovert/WowPeruVisualShop](https://github.com/DarckRovert/WowPeruVisualShop)
 
 ---

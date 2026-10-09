@@ -1,5 +1,5 @@
 --[[--------------------------------------------------------------------------
-  WoW Peru - Tienda de Visuales : CATALOGO
+  Project Jaina - Tienda de Visuales : CATALOGO
   Version: 2026-08-26
 
   FUENTE UNICA DE VERDAD.

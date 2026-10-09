@@ -1,5 +1,5 @@
 --[[--------------------------------------------------------------------------
-  WoW Peru - Tienda de Visuales : INTERFAZ (cliente 3.3.5a)
+  Project Jaina - Tienda de Visuales : INTERFAZ (cliente 3.3.5a)
   Version: 2026-09-02
 
   Se abre con el boton del minimapa. Sin comandos de chat a proposito.
@@ -23,7 +23,7 @@ local PREFIX  = "WPVS"
 local ALT_PREFIX = "WP_VISUAL"
 local C       = WowPeruVisualCatalog
 
-local ICON_PATH = "Interface\\AddOns\\WowPeruVisualShop\\iconos\\"
+local ICON_PATH = "Interface\\AddOns\\Jaina_VisualShop\\iconos\\"
 local ICON_FALLBACK = "Interface\\Icons\\Spell_Holy_AuraOfLight"
 
 -- Las alas que se mueven traen una LAMINA: una rejilla de 8x4 con 32 fotogramas
@@ -131,16 +131,16 @@ shop:Hide()
 -- Cerrar con ESC.
 tinsert(UISpecialFrames, "WowPeruVisualShopFrame")
 
--- Logo Oficial de WoW Perú
+-- Logo Oficial de Project Jaina
 local logo = shop:CreateTexture(nil, "ARTWORK")
 logo:SetSize(84, 42)
 logo:SetPoint("TOPLEFT", shop, "TOPLEFT", PAD, -10)
-logo:SetTexture("Interface\\AddOns\\WowPeruVisualShop\\Textures\\wowperu_logo.tga")
+logo:SetTexture("Interface\\AddOns\\Jaina_VisualShop\\Textures\\jaina_logo.tga")
 shop.logo = logo
 
 local title = shop:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
 title:SetPoint("TOP", 0, -16)
-title:SetText("|cFFD4AF37WoW Perú|r - Tienda de Visuales")
+title:SetText("|cFFD4AF37Project Jaina|r - Tienda de Visuales")
 
 local subtitle = shop:CreateFontString(nil, "OVERLAY", "GameFontHighlightSmall")
 subtitle:SetPoint("TOP", title, "BOTTOM", 0, -4)
@@ -757,8 +757,10 @@ local vsInitFrame = CreateFrame("Frame")
 vsInitFrame:RegisterEvent("ADDON_LOADED")
 vsInitFrame:RegisterEvent("PLAYER_LOGIN")
 vsInitFrame:SetScript("OnEvent", function(self, event, addon)
-    if event == "ADDON_LOADED" and addon == "WowPeruVisualShop" or event == "PLAYER_LOGIN" then
-        local savedAngle = (WowPeruVisualShopDB and WowPeruVisualShopDB.minimapAngle) or DEFAULT_VISUALSHOP_ANGLE
+    if (event == "ADDON_LOADED" and (addon == "Wanos_VisualShop" or addon == "WowPeruVisualShop")) or event == "PLAYER_LOGIN" then
+        Wanos_VisualShop_DB = Wanos_VisualShop_DB or WowPeruVisualShopDB or {}
+        WowPeruVisualShopDB = Wanos_VisualShop_DB
+        local savedAngle = (Wanos_VisualShop_DB and Wanos_VisualShop_DB.minimapAngle) or DEFAULT_VISUALSHOP_ANGLE
         UpdateVisualShopBtnPosition(mini, savedAngle)
     end
 end)

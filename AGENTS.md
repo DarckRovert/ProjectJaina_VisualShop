@@ -1,6 +1,6 @@
 # 🤖 Reglas de Agente IA — WowPeruVisualShop
 
-> **Ámbito:** `d:\WoW Peru\Client\Interface\AddOns\WowPeruVisualShop\`
+> **Ámbito:** `d:\Project Jaina\Client\Interface\AddOns\Jaina_VisualShop\`
 
 ## Restricciones Críticas
 

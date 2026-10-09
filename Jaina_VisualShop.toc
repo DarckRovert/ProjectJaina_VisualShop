@@ -1,0 +1,9 @@
+## Interface: 30300
+## Title: Project Jaina - Tienda de Visuales
+## Notes: Tienda de visuales cosmeticos del reino Alas (Pruebas).
+## Author: DarckRovert (Elnazzareno) & Project Jaina Team
+## Version: 2026-09-02
+## SavedVariables: Wanos_VisualShop_DB
+
+Catalog.lua
+UI.lua

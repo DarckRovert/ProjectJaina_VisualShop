@@ -1,12 +1,12 @@
-# 🇵🇪 WoW Perú — VisualShop (Tienda de Cosméticos)
+# 🇵🇪 Project Jaina — VisualShop (Tienda de Cosméticos)
 
 [![GitHub](https://img.shields.io/badge/GitHub-DarckRovert%2FWowPeruVisualShop-black?logo=github)](https://github.com/DarckRovert/WowPeruVisualShop)
 
-> **WoW Perú Ecosystem** · WotLK 3.3.5a compatible · `Interface: 30300`
+> **Project Jaina Ecosystem** · WotLK 3.3.5a compatible · `Interface: 30300`
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-Tienda oficial de efectos visuales, alas, auras y cosméticos del **Reino Andino**. Permite a los jugadores previsualizar, adquirir y equipar cosméticos personalizados en tiempo real comunicándose directamente con el backend autoritativo de Eluna en AzerothCore.
+Tienda oficial de efectos visuales, alas, auras y cosméticos del **Project Jaina**. Permite a los jugadores previsualizar, adquirir y equipar cosméticos personalizados en tiempo real comunicándose directamente con el backend autoritativo de Eluna en AzerothCore.
 
 ---
 
@@ -51,12 +51,12 @@ Tienda oficial de efectos visuales, alas, auras y cosméticos del **Reino Andino
    ```
    World of Warcraft/Interface/AddOns/WowPeruVisualShop/
    ```
-2. Inicia el cliente de juego WoW Perú y verifica que el accesorio esté activo.
+2. Inicia el cliente de juego Project Jaina y verifica que el accesorio esté activo.
 3. Puedes abrir la tienda haciendo clic en el botón del minimapa o escribiendo `/tienda`.
 
 ## Créditos y Licencia
 
-- **Autor:** DarckRovert (Ingame: `Elnazzareno`) & WoW Perú Team — [wow-peru.lat](https://wow-peru.lat/)
+- **Autor:** DarckRovert (Ingame: `Elnazzareno`) & Project Jaina Team — [worldofwanos.com](https://worldofwanos.com/)
 - **Licencia:** [MIT License](LICENSE)
 
 ---
@@ -70,4 +70,4 @@ Tienda oficial de efectos visuales, alas, auras y cosméticos del **Reino Andino
 
 ---
 
-*Parte del [ecosistema WoW Perú](https://github.com/DarckRovert)*
+*Parte del [ecosistema Project Jaina](https://github.com/DarckRovert)*

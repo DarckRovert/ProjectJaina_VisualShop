@@ -1,6 +1,6 @@
 # 🛡️ Política de Seguridad y Mitigación de Vulnerabilidades — WowPeruVisualShop
 
-**Proyecto:** Ecosistema WoW Perú  
+**Proyecto:** Ecosistema Project Jaina  
 **Repositorio:** [https://github.com/DarckRovert/WowPeruVisualShop](https://github.com/DarckRovert/WowPeruVisualShop)
 
 ---
@@ -25,6 +25,6 @@ Este addon sigue estrictos principios de diseño seguro para el cliente de World
 
 ## 🚨 Reporte de Vulnerabilidades
 
-Si descubres una vulnerabilidad o un exploit que afecte la estabilidad del cliente o del servidor, por favor repórtalo directamente al Staff de WoW Perú a través de los canales oficiales:
-- **Discord:** Staff WoW Perú (Ticket Privado)
+Si descubres una vulnerabilidad o un exploit que afecte la estabilidad del cliente o del servidor, por favor repórtalo directamente al Staff de Project Jaina a través de los canales oficiales:
+- **Discord:** Staff Project Jaina (Ticket Privado)
 - **GitHub Issues:** [https://github.com/DarckRovert/WowPeruVisualShop/issues](https://github.com/DarckRovert/WowPeruVisualShop/issues)
