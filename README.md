@@ -6,7 +6,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-Tienda oficial de efectos visuales, alas, auras y cosméticos del **Project Jaina**. Permite a los jugadores previsualizar, adquirir y equipar cosméticos personalizados en tiempo real comunicándose directamente con el backend autoritativo de Eluna en AzerothCore.
+Tienda oficial de efectos visuales, alas, auras y cosméticos del **Project Jaina**. Permite a los jugadores previsualizar, adquirir y equipar cosméticos personalizados en tiempo real comunicándose directamente con el backend autoritativo de Eluna en JainaCore.
 
 ---
 
@@ -20,7 +20,7 @@ Tienda oficial de efectos visuales, alas, auras y cosméticos del **Project Jain
 ## Compatibilidad de Plataforma
 
 - **Cliente:** World of Warcraft 3.3.5a (Build 12340) | `Interface: 30300` | Lua 5.1
-- **Backend Servidor:** `59_SpellVisualCatalog.lua` (Eluna Lua Engine / AzerothCore v4.x)
+- **Backend Servidor:** `59_SpellVisualCatalog.lua` (Eluna Lua Engine / JainaCore v4.x)
 - **Base de Datos:** Tabla `character_spell_visuals` en MySQL.
 
 ## Rangos de Spell IDs Reservados

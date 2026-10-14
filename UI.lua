@@ -572,7 +572,14 @@ local function ApplyFinChunks()
     end
 end
 
+local Toggle -- Predeclaración para uso en rutas de mensaje
+
 local ROUTES = {
+    OPEN = function(rest)
+        if Toggle and not shop:IsShown() then
+            Toggle()
+        end
+    end,
     TOK = function(rest)
         state.tokens = tonumber(rest) or 0
     end,
@@ -651,7 +658,7 @@ end)
 -- falta tres barras distintas para hacer lo mismo que un clic.
 --------------------------------------------------------------------------
 
-local function Toggle()
+Toggle = function()
     if shop:IsShown() then
         shop:Hide()
     else
