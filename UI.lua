@@ -775,14 +775,14 @@ end)
 
 UpdateVisualShopBtnPosition(mini, DEFAULT_VISUALSHOP_ANGLE)
 
--- Comandos Slash
+-- Comandos Slash (Desacoplado /tienda para evitar colisión con la Tesorería de Dalaran)
 SLASH_WOWPERU_VISUAL1 = "/visualshop"
-SLASH_WOWPERU_VISUAL2 = "/tienda"
-SLASH_WOWPERU_VISUAL3 = "/alas"
-SLASH_WOWPERU_VISUAL4 = "/wpvs"
+SLASH_WOWPERU_VISUAL2 = "/alas"
+SLASH_WOWPERU_VISUAL3 = "/wpvs"
 SlashCmdList["WOWPERU_VISUAL"] = function()
     Toggle()
 end
+WowPeruVisual_ToggleUI = Toggle
 
 DEFAULT_CHAT_FRAME:AddMessage(
-    "|cff40ff40[Tienda de Visuales]|r cargada. Usa /tienda, /visualshop o el botón del minimapa.")
+    "|cff40ff40[Tienda de Visuales]|r cargada. Usa /alas, /visualshop o el botón del minimapa.")
