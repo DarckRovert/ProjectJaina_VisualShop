@@ -19,9 +19,10 @@
   puesto y no un dibujo aparte que se pueda desincronizar.
 ----------------------------------------------------------------------------]]
 
-local PREFIX  = "WPVS"
-local ALT_PREFIX = "WP_VISUAL"
-local C       = WowPeruVisualCatalog
+local PREFIX        = "JAINA_VISUAL"
+local ALT_PREFIX     = "WPVS"
+local LEGACY_PREFIX  = "WP_VISUAL"
+local C              = WowPeruVisualCatalog
 
 local ICON_PATH = "Interface\\AddOns\\ProjectJaina_VisualShop\\iconos\\"
 local ICON_FALLBACK = "Interface\\Icons\\Spell_Holy_AuraOfLight"
@@ -80,6 +81,7 @@ local function Talk(msg)
     if RegisterAddonMessagePrefix then
         RegisterAddonMessagePrefix(PREFIX)
         RegisterAddonMessagePrefix(ALT_PREFIX)
+        RegisterAddonMessagePrefix(LEGACY_PREFIX)
     end
     SendAddonMessage(PREFIX, msg, "WHISPER", pName)
 end
@@ -635,13 +637,14 @@ listener:SetScript("OnEvent", function(self, event, ...)
         if RegisterAddonMessagePrefix then
             RegisterAddonMessagePrefix(PREFIX)
             RegisterAddonMessagePrefix(ALT_PREFIX)
+            RegisterAddonMessagePrefix(LEGACY_PREFIX)
         end
         Talk("SYNC")
         return
     end
 
     local prefix, message = ...
-    if prefix ~= PREFIX and prefix ~= ALT_PREFIX then return end
+    if prefix ~= PREFIX and prefix ~= ALT_PREFIX and prefix ~= LEGACY_PREFIX then return end
 
     local verb, rest = string.match(message, "^(%u+):(.*)$")
     local route = verb and ROUTES[verb]
@@ -776,12 +779,16 @@ end)
 UpdateVisualShopBtnPosition(mini, DEFAULT_VISUALSHOP_ANGLE)
 
 -- Comandos Slash (Desacoplado /tienda para evitar colisión con la Tesorería de Dalaran)
-SLASH_WOWPERU_VISUAL1 = "/visualshop"
-SLASH_WOWPERU_VISUAL2 = "/alas"
-SLASH_WOWPERU_VISUAL3 = "/wpvs"
-SlashCmdList["WOWPERU_VISUAL"] = function()
+SLASH_JAINA_VISUAL1 = "/visualshop"
+SLASH_JAINA_VISUAL2 = "/alas"
+SLASH_JAINA_VISUAL3 = "/jainavisual"
+SLASH_JAINA_VISUAL4 = "/wpvs"
+SlashCmdList["JAINA_VISUAL"] = function()
     Toggle()
 end
+-- Puente pasivo de retrocompatibilidad
+SlashCmdList["WOWPERU_VISUAL"] = SlashCmdList["JAINA_VISUAL"]
+JainaVisual_ToggleUI = Toggle
 WowPeruVisual_ToggleUI = Toggle
 
 DEFAULT_CHAT_FRAME:AddMessage(
