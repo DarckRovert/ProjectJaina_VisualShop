@@ -1,7 +1,7 @@
 # 🔌 Especificación Técnica y API — ProjectJaina_VisualShop
 
 [![GitHub](https://img.shields.io/badge/GitHub-DarckRovert%2FProjectJaina_VisualShop-black?logo=github)](https://github.com/DarckRovert/ProjectJaina_VisualShop)
-[![Ecosistema](https://img.shields.io/badge/Ecosistema-WoW%20Per%C3%BA%203.3.5a-gold.svg)](https://darckrovert.github.io/ProjectJaina_Web/)
+[![Ecosistema](https://img.shields.io/badge/Ecosistema-Project%20Jaina%203.3.5a-gold.svg)](https://darckrovert.github.io/ProjectJaina_Web/)
 
 ## 📌 Resumen Arquitectónico
 Tienda in-game para previsualizar y adquirir auras cosméticas, alas, efectos de armas e ilusiones visuales sincronizadas con backend Eluna 59_SpellVisualCatalog.lua.
