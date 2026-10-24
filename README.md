@@ -56,7 +56,7 @@ Tienda oficial de efectos visuales, alas, auras y cosméticos del **Project Jain
 
 ## Créditos y Licencia
 
-- **Autor:** DarckRovert (Ingame: `Elnazzareno`) & Antigravity (Mythos 5) — [projectjaina.com](https://darckrovert.github.io/ProjectJaina_Web/)
+- **Autor:** DarckRovert (Ingame: `Elnazzareno`) & Antigravity (Mythos 5) — [Portal Oficial](https://darckrovert.github.io/ProjectJaina_Web/)
 - **Licencia:** [MIT License](LICENSE)
 
 ---
