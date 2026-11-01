@@ -4,11 +4,15 @@
 
 # ❄️ Project Jaina — VisualShop (Tienda de Cosméticos)
 
-[![GitHub](https://img.shields.io/badge/GitHub-DarckRovert%2FProjectJaina_VisualShop-black?logo=github)](https://github.com/DarckRovert/ProjectJaina_VisualShop)
+[![WoW Client](https://img.shields.io/badge/WoW%20Client-3.3.5a%20(Build%2012340)-blue.svg)](https://darckrovert.github.io/ProjectJaina_Web/)
+[![Engine](https://img.shields.io/badge/Engine-JainaCore%20C%2B%2B20-blue.svg)](https://github.com/DarckRovert/JainaCore_Server)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![GitHub](https://img.shields.io/badge/GitHub-DarckRovert%2FProjectJaina__VisualShop-black?logo=github)](https://github.com/DarckRovert/ProjectJaina_VisualShop)
+[![Ecosystem](https://img.shields.io/badge/Project%20JAIna-Sovereign-gold)](https://darckrovert.github.io/ProjectJaina_Web/)
+
 
 > **Project Jaina Ecosystem** · WotLK 3.3.5a compatible · `Interface: 30300`
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 Tienda oficial de efectos visuales, alas, auras y cosméticos del **Project Jaina**. Permite a los jugadores previsualizar, adquirir y equipar cosméticos personalizados en tiempo real comunicándose directamente con el backend autoritativo de Eluna en JainaCore.
 
