@@ -1,5 +1,5 @@
 ## Interface: 30300
-## Version: 1.0.1
+## Version: 1.0.2
 ## Title: |cFFD4AF37Project Jaina|r - |cFF00FFCCVisualShop|r
 ## Notes: Tienda de visuales cosmeticos del reino Alas (Pruebas).
 ## Author: DarckRovert (Elnazzareno) & Antigravity (Mythos 5)
