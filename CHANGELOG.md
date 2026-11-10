@@ -4,6 +4,13 @@ Todos los cambios notables de este proyecto están documentados en este archivo 
 
 ---
 
+## [1.0.2] — 2026-11-10
+### Deduplicación Cross-Prefix y Guardas de Metamorfosis/Entrega Offline (Hito #341 / Bug #4)
+- **Anti-Eco Cross-Prefix (`UI.lua`):** Añadida ventana de deduplicación (`0.25s`, `lastRecvMsg` / `lastRecvPrefix`) para evitar el procesamiento duplicado de respuestas entre prefijos primario y legacy.
+- **Catálogo Visual & Entrega (`59_SpellVisualCatalog.lua`, `66_StoreDeliveryEngine.lua`):** Enrutamiento por prefijo preferido (`playerPrefPrefix`), bloqueo de cambio si `visualSwapInProgress` o en forma druida/chaman (`IsPlayerInShapeshiftForm`), sanitización de `bonusKey` (`[^%a]`) y desactivación previa de visuales activos al entregar offline.
+
+---
+
 ## [1.0.1] — 2026-10-10
 ### Estabilización de Ecosistema y Gobernanza Oficial (Project Jaina)
 - **Normalización de UI y Gráficos:** Cuadratura geométrica 1:1 en icono del catálogo (42x42), SetBlendMode('BLEND') y sincronización autoritativa de paquetes OWN, EXP y FIN.

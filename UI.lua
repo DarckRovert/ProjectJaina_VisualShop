@@ -629,6 +629,8 @@ local ROUTES = {
 
 -- Las formas de druida las lleva el SERVIDOR, enganchado a los eventos de aura
 -- aplicada y quitada. El cliente no tiene que vigilar nada.
+local lastRecvMsg, lastRecvPrefix, lastRecvTime = nil, nil, 0
+
 local listener = CreateFrame("Frame")
 listener:RegisterEvent("CHAT_MSG_ADDON")
 listener:RegisterEvent("PLAYER_ENTERING_WORLD")
@@ -645,6 +647,12 @@ listener:SetScript("OnEvent", function(self, event, ...)
 
     local prefix, message = ...
     if prefix ~= PREFIX and prefix ~= ALT_PREFIX and prefix ~= LEGACY_PREFIX then return end
+
+    local now = GetTime()
+    if message == lastRecvMsg and prefix ~= lastRecvPrefix and (now - lastRecvTime) < 0.25 then
+        return
+    end
+    lastRecvMsg, lastRecvPrefix, lastRecvTime = message, prefix, now
 
     local verb, rest = string.match(message, "^(%u+):(.*)$")
     local route = verb and ROUTES[verb]
