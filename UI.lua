@@ -67,7 +67,7 @@ local state = {
     -- abierta sin tener que pedirle nada al servidor.
     expira   = {},
     finChunks = {},  -- buffer para FIN
-    -- [id] = true si la tuvo y ya se le paso. No vuelve a estar en venta.
+    -- [id] = true si la tuvo y ya caduco (disponible para renovar).
     caducada = {},
 }
 
@@ -97,6 +97,19 @@ local function Queda(id)
     if seg >= 86400 then return string.format("%d d", math.floor(seg / 86400)) end
     if seg >= 3600  then return string.format("%d h", math.floor(seg / 3600)) end
     return string.format("%d min", math.max(1, math.floor(seg / 60)))
+end
+
+local function EstaVigente(id)
+    if not state.owned[id] then return false end
+    local fin = state.expira[id]
+    if fin and fin <= GetTime() then return false end
+    return true
+end
+
+local function EstaCaducado(id)
+    if state.caducada[id] then return true end
+    local fin = state.expira[id]
+    return state.owned[id] ~= nil and fin ~= nil and fin <= GetTime()
 end
 
 local function Backdrop(frame, bg, edge)
@@ -142,20 +155,20 @@ logo:SetBlendMode("BLEND")
 shop.logo = logo
 
 local title = shop:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
-title:SetPoint("TOP", 0, -16)
+title:SetPoint("TOP", 0, -14)
 title:SetText("|cFFD4AF37Project Jaina|r - Tienda de Visuales")
 
 local subtitle = shop:CreateFontString(nil, "OVERLAY", "GameFontHighlightSmall")
-subtitle:SetPoint("TOP", title, "BOTTOM", 0, -4)
+subtitle:SetPoint("TOP", title, "BOTTOM", 0, -5)
+subtitle:SetWidth(460)
+subtitle:SetJustifyH("CENTER")
 subtitle:SetText(string.format(
-    "Elige un visual y compralo. Se equipa solo. Dura %d dias y solo se puede comprar una vez.",
+    "Elige unas alas. Duran %d dias y puedes renovarlas al caducar.",
     C.dias))
 
-local pageLabel = shop:CreateFontString(nil, "OVERLAY", "GameFontNormal")
-pageLabel:SetPoint("TOPLEFT", PAD + 90, -22)
-
 local tokenLabel = shop:CreateFontString(nil, "OVERLAY", "GameFontNormal")
-tokenLabel:SetPoint("TOPRIGHT", -34, -18)
+tokenLabel:SetPoint("TOPRIGHT", -36, -18)
+tokenLabel:SetJustifyH("RIGHT")
 
 local close = CreateFrame("Button", nil, shop, "UIPanelCloseButton")
 close:SetPoint("TOPRIGHT", -4, -4)
@@ -203,7 +216,9 @@ local function BuildCard(index)
     card.icon:SetPoint("CENTER", card.stage, "CENTER", 0, 0)
 
     card.cost = card:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
+    card.cost:SetPoint("BOTTOMLEFT", 8, 30)
     card.cost:SetPoint("BOTTOMRIGHT", -8, 30)
+    card.cost:SetJustifyH("RIGHT")
     card.cost:SetTextColor(1, 0.82, 0)
 
     -- Que hace el bonus, escrito en la propia tarjeta. Antes solo salia al
@@ -227,18 +242,20 @@ local function BuildCard(index)
         GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
         GameTooltip:AddLine(self.entry.name)
         GameTooltip:AddLine(self.entry.cat, 0.55, 0.55, 0.95)
-        local mio = state.owned[self.entry.id]
+        local vigente = EstaVigente(self.entry.id)
+        local caducada = EstaCaducado(self.entry.id)
+        local mio = vigente and state.owned[self.entry.id] or nil
         local b = mio and mio ~= "" and C.bonus[mio]
         if b then
             GameTooltip:AddLine("Bonus: " .. b.name, 1, 0.82, 0)
             GameTooltip:AddLine(b.desc, 1, 1, 1)
         end
-        if state.active == self.entry.id then
+        if vigente and state.active == self.entry.id then
             GameTooltip:AddLine("En uso", 0.25, 1, 0.25)
         elseif mio then
             GameTooltip:AddLine("Ya lo tienes. Clic y luego Equipar.", 1, 1, 1)
-        elseif state.caducada[self.entry.id] then
-            GameTooltip:AddLine("Proximamente", 0.6, 0.6, 0.6)
+        elseif caducada then
+            GameTooltip:AddLine("Caducado - Disponible para renovar", 1, 0.67, 0.27)
         else
             GameTooltip:AddLine(string.format("Desde %d %s, segun el bonus que elijas",
                 PRECIO_MINIMO, C.currency.name), 1, 0.82, 0)
@@ -248,11 +265,12 @@ local function BuildCard(index)
             if q then
                 GameTooltip:AddLine("Le queda " .. q, 1, 0.82, 0)
             end
-        elseif state.caducada[self.entry.id] then
-            GameTooltip:AddLine("Ya las tuviste y se te acabaron. No se pueden volver a comprar.",
-                0.7, 0.7, 0.7)
+        elseif caducada then
+            GameTooltip:AddLine(string.format(
+                "Ya las tuviste y caducaron. Puedes volver a comprarlas por %d dias y elegir nuevo bonus.", C.dias),
+                0.7, 0.7, 0.7, true)
         else
-            GameTooltip:AddLine(string.format("Dura %d dias, y solo se puede comprar una vez", C.dias),
+            GameTooltip:AddLine(string.format("Dura %d dias y se puede renovar al caducar", C.dias),
                 0.7, 0.7, 0.7)
         end
         GameTooltip:Show()
@@ -294,6 +312,9 @@ prev:SetText("Anterior")
 prev:SetScript("OnClick", function()
     if state.page > 1 then state.page = state.page - 1; ProjectJaina_VisualShop_Refresh() end
 end)
+
+local pageLabel = shop:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+pageLabel:SetPoint("LEFT", prev, "RIGHT", 16, 0)
 
 local next_ = CreateFrame("Button", nil, shop, "UIPanelButtonTemplate")
 next_:SetWidth(110); next_:SetHeight(24)
@@ -406,12 +427,10 @@ end
 action:SetScript("OnClick", function()
     local id = state.selected
     if not id then return end
-    if state.active == id then
+    if EstaVigente(id) and state.active == id then
         Talk("OFF")
-    elseif state.owned[id] then
+    elseif EstaVigente(id) then
         Talk("USE:" .. id)
-    elseif state.caducada[id] then
-        return                      -- ya no esta en venta
     else
         AbrirPanelBonus(id)
     end
@@ -468,12 +487,14 @@ function ProjectJaina_VisualShop_Refresh()
             -- El precio ya no depende del ala sino del BONUS que elijas, asi
             -- que en las que no tienes se ensena desde cuanto sale. En las
             -- compradas se ensena el bonus que llevan pegado.
-            local mio = state.owned[entry.id]
+            local vigente = EstaVigente(entry.id)
+            local caducada = EstaCaducado(entry.id)
+            local mio = vigente and state.owned[entry.id] or nil
             -- En las tuyas el precio sobra y lo que importa es el tiempo, asi
             -- que la cuenta atras va en su hueco.
             local q = mio and Queda(entry.id)
             local cola = q and ("  |cffffd200" .. q .. "|r") or ""
-            if state.active == entry.id then
+            if vigente and state.active == entry.id then
                 card.icon:SetVertexColor(1, 1, 1)
                 card.cost:SetText("|cff40ff40En uso|r" .. cola)
                 card.stage:SetVertexColor(0.06, 0.10, 0.06, 1)
@@ -481,12 +502,11 @@ function ProjectJaina_VisualShop_Refresh()
                 card.icon:SetVertexColor(1, 1, 1)
                 card.cost:SetText("|cff40ff40Comprado|r" .. cola)
                 card.stage:SetVertexColor(0.05, 0.05, 0.07, 1)
-            elseif state.caducada[entry.id] then
-                -- La tuvo y se le paso. No vuelve a estar en venta, asi que en
-                -- el hueco del precio no va un precio.
-                card.icon:SetVertexColor(0.35, 0.35, 0.38)
-                card.cost:SetText("|cff909090Proximamente|r")
-                card.stage:SetVertexColor(0.05, 0.05, 0.07, 1)
+            elseif caducada then
+                -- Ya caduco: disponible para renovar eligiendo nuevo bonus.
+                card.icon:SetVertexColor(0.60, 0.60, 0.65)
+                card.cost:SetText(string.format("desde %d %s", PRECIO_MINIMO, C.currency.name))
+                card.stage:SetVertexColor(0.06, 0.05, 0.04, 1)
             else
                 card.icon:SetVertexColor(0.45, 0.45, 0.50)
                 card.cost:SetText(string.format("desde %d %s", PRECIO_MINIMO, C.currency.name))
@@ -500,6 +520,9 @@ function ProjectJaina_VisualShop_Refresh()
             if b then
                 card.cat:SetText("|cffffd200" .. b.name .. "|r")
                 card.bono:SetText("|cff9fd8ff" .. b.desc .. "|r")
+            elseif caducada then
+                card.cat:SetText("|cffffaa44Caducado - Renovable|r")
+                card.bono:SetText("|cff9fd8ffElige un bonus al renovar|r")
             else
                 card.cat:SetText(entry.cat)
                 card.bono:SetText("")
@@ -523,13 +546,12 @@ function ProjectJaina_VisualShop_Refresh()
         action:Disable()
     else
         action:Enable()
-        if state.active == id then
+        if EstaVigente(id) and state.active == id then
             action:SetText("Quitar")
-        elseif state.owned[id] then
+        elseif EstaVigente(id) then
             action:SetText("Equipar")
-        elseif state.caducada[id] then
-            action:SetText("Proximamente")
-            action:Disable()
+        elseif EstaCaducado(id) then
+            action:SetText("Renovar y elegir bonus")
         else
             action:SetText("Comprar y elegir bonus")
         end
@@ -776,7 +798,7 @@ local vsInitFrame = CreateFrame("Frame")
 vsInitFrame:RegisterEvent("ADDON_LOADED")
 vsInitFrame:RegisterEvent("PLAYER_LOGIN")
 vsInitFrame:SetScript("OnEvent", function(self, event, addon)
-    if (event == "ADDON_LOADED" and (addon == "ProjectJaina_VisualShop" or addon == "ProjectJaina_VisualShop")) or event == "PLAYER_LOGIN" then
+    if (event == "ADDON_LOADED" and addon == "ProjectJaina_VisualShop") or event == "PLAYER_LOGIN" then
         ProjectJaina_VisualShop_DB = ProjectJaina_VisualShop_DB or ProjectJaina_VisualShopDB or {}
         ProjectJaina_VisualShopDB = ProjectJaina_VisualShop_DB
         local savedAngle = (ProjectJaina_VisualShop_DB and ProjectJaina_VisualShop_DB.minimapAngle) or DEFAULT_VISUALSHOP_ANGLE

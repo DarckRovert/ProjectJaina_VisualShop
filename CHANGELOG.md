@@ -4,6 +4,13 @@ Todos los cambios notables de este proyecto están documentados en este archivo 
 
 ---
 
+## [1.0.3] — 2026-11-16
+### Renovación de Alas Caducadas y Ajustes de Diseño UI (Hito #382)
+- **Renovación de Visuales Expirados (`UI.lua`):** Añadidos helpers de vigencia temporal `EstaVigente(id)` y `EstaCaducado(id)` para desbloquear la recompra/renovación tras expirar alas previas (mostrando el botón `"Renovar y elegir bonus"` y estado `"Caducado - Disponible para renovar"` en lugar de bloquear con `"Proximamente"`).
+- **Maquetado y Validación (`UI.lua`):** Ajuste geométrico de `title`, `subtitle`, `tokenLabel`, `pageLabel` y `card.cost`, unificación del handler `ADDON_LOADED` y verificación sintáctica limpia con `luac52.exe -p` (exit `0`).
+
+---
+
 ## [1.0.2] — 2026-11-10
 ### Deduplicación Cross-Prefix y Guardas de Metamorfosis/Entrega Offline (Hito #341 / Bug #4)
 - **Anti-Eco Cross-Prefix (`UI.lua`):** Añadida ventana de deduplicación (`0.25s`, `lastRecvMsg` / `lastRecvPrefix`) para evitar el procesamiento duplicado de respuestas entre prefijos primario y legacy.

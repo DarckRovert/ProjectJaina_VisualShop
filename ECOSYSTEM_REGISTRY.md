@@ -10,7 +10,7 @@ Ficha técnica oficial de registro en la infraestructura multi-addon de **Projec
 |---|---|
 | **Nombre Técnico** | `ProjectJaina_VisualShop` |
 | **Carpeta Local** | `ProjectJaina_VisualShop` |
-| **Versión Actual** | `1.0.1` |
+| **Versión Actual** | `1.0.3` |
 | **Clasificación** | Cliente / Cosmético |
 | **Licencia Formal** | MIT |
 | **Repositorio GitHub** | [ProjectJaina_VisualShop](https://github.com/DarckRovert/ProjectJaina_VisualShop) |
@@ -38,7 +38,7 @@ Ficha técnica oficial de registro en la infraestructura multi-addon de **Projec
 | 12 | [ProjectJaina_Talented](https://github.com/DarckRovert/ProjectJaina_Talented) | `Talented` | 3.3.5-Jaina | GPL-2.0 | Árbol de talentos avanzado con soporte para plantillas y compartición. |
 | 13 | [ProjectJaina_TBCBalance](https://github.com/DarckRovert/ProjectJaina_TBCBalance) | `ProjectJaina_TBCBalance` | 1.0.0 | MIT | Monitor privado de balance y composición de bandas TBC para Game Masters. |
 | 14 | [ProjectJaina_Wardrobe](https://github.com/DarckRovert/ProjectJaina_Wardrobe) | `ProjectJaina_Wardrobe` | 1.0.0 | MIT | Guardarropa, catálogo cosmético y transfiguración con backend Eluna (60_WardrobeSystem.lua). |
-| 15 | [ProjectJaina_VisualShop](https://github.com/DarckRovert/ProjectJaina_VisualShop) | `ProjectJaina_VisualShop` | 1.0.1 | MIT | Tienda oficial de efectos visuales, auras y alas con backend Eluna (59_SpellVisualCatalog.lua). |
+| 15 | [ProjectJaina_VisualShop](https://github.com/DarckRovert/ProjectJaina_VisualShop) | `ProjectJaina_VisualShop` | 1.0.3 | MIT | Tienda oficial de efectos visuales, auras y alas con backend Eluna (59_SpellVisualCatalog.lua). |
 | 16 | [ProjectJaina_Voice](https://github.com/DarckRovert/ProjectJaina_Voice) | `ProjectJaina_Voice` | 1.0.0 | MIT | Voz espacial 3D por proximidad y vinculación WebRTC con backend Eluna (65_VoiceProximitySync.lua). |
 
 ### B. Suites Comunitarias Monorepositorio Pre-instaladas (`ProjectJaina_Lab\AddOns\`)

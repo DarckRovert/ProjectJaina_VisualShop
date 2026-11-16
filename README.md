@@ -21,6 +21,7 @@ Tienda oficial de efectos visuales, alas, auras y cosméticos del **Project Jain
 ## Características
 
 - **Catálogo de Visuales Dinámico** — Previsualización 3D en modelo de personaje antes de comprar.
+- **Renovación al Caducar** — Soporte en `UI.lua` (`EstaVigente` / `EstaCaducado`) para renovar alas expiradas eligiendo un nuevo bonus.
 - **Categorías Cosméticas** — Alas exclusivas, auras ambientales, auras de forma y títulos visuales.
 - **Botón de Minimapa con Deadzone** — Botón orbital interactivo con umbral físico para evitar clics accidentales durante el arrastre.
 - **Sincronización Atómica** — Protocolo de red por chunks seguros (`OWN`, `EXP`, `FIN`) inmune a pérdidas de paquetes.
